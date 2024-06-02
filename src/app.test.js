@@ -8,3 +8,8 @@ test('should return the number itself if there is only one number', () => {
     expect(add("1")).toBe(1);
     expect(add("5")).toBe(5);
 });
+
+test('should return the sum of any amount of comma-separated numbers', () => {
+    expect(add("1,2,3")).toBe(6);
+    expect(add("1,2,3,4,5")).toBe(15);
+});

@@ -9,8 +9,13 @@ function add(numbers) {
         delimiter = new RegExp(cDelimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
         numbers = parts[1];
     }
-    const nums = numbers.split(delimiter);
-    return nums.reduce((sum, num) => sum + parseInt(num), 0);
+    const nums = numbers.split(delimiter).map(Number);
+    const negNums = nums.filter(num => num < 0);
+
+    if(negNums.length > 0) throw new Error(`negative numbers not allowed`);
+
+
+    return nums.reduce((sum, num) => sum + num, 0);
 }
 
 module.exports = add;
